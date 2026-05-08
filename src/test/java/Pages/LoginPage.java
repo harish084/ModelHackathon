@@ -1,12 +1,15 @@
 package Pages;
 
 import Tests.ConfigReader;
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.io.File;
 import java.io.IOException;
 import java.time.Duration;
 
@@ -34,7 +37,7 @@ public class LoginPage {
         log.click();
         assertTrue(configReader.getUrl().contains("https://katalon-demo-cura.herokuapp.com/"));
     }
-    public void InvalidLogin()  {
+    public void InvalidLogin() throws IOException {
         WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(10));
         driver.get(configReader.getLoginUrl());
         WebElement pass=driver.findElement(By.id("txt-username"));
